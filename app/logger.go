@@ -4,6 +4,8 @@ import (
   "log"
   "net/http"
   "time"
+
+  "github.com/fatih/color"
 )
 
 func Logger(inner http.Handler, name string) http.Handler {
@@ -13,9 +15,8 @@ func Logger(inner http.Handler, name string) http.Handler {
     inner.ServeHTTP(w,r)
 
     log.Printf(
-      "%s\t%s\t%s\t%s",
-      r.Method,
-      r.RequestURI,
+      color.GreenString(r.Method) + "\t" +
+      color.RedString(r.RequestURI) + "\t%s\t%s",
       name,
       time.Since(start),
     )
