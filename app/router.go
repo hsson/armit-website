@@ -3,8 +3,11 @@ package app
 import (
   "net/http"
   "log"
+  "os"
   "github.com/gorilla/mux"
 )
+
+const StaticFolder = "static"
 
 // Creates a router that handles the routes specified in the routes.go file
 func NewRouter() *mux.Router {
@@ -24,8 +27,18 @@ func NewRouter() *mux.Router {
   }
   log.Printf("Backend router successfully initialized with %d routes.", len(routes))
 
-  fileServer := Logger(http.FileServer(http.Dir("static")), "static")
+  fileServer := Logger(noDirListing(http.FileServer(http.Dir(StaticFolder))), StaticFolder)
   router.PathPrefix("/").Handler(fileServer)
   log.Println("Web router successfully initialized.")
   return router
+}
+
+func noDirListing(h http.Handler) http.HandlerFunc {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+  	if f, err := os.Stat(StaticFolder + r.URL.Path); r.URL.Path != "/" && (err != nil || f.IsDir()) {
+  		http.NotFound(w, r)
+  		return
+  	}
+		h.ServeHTTP(w, r)
+	})
 }
