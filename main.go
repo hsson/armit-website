@@ -7,9 +7,11 @@ import (
   "github.com/hsson/armit-website/app"
 )
 
+const ServerPort = ":8080"
+
 func main() {
   app.InitAuth()
   r := app.NewRouter()
-  log.Println("Server starting...")
-  log.Fatal(http.ListenAndServe(":5000", r))
+  log.Printf("Server starting on localhost%s...", ServerPort)
+  log.Fatal(http.ListenAndServe(ServerPort, r))
 }
