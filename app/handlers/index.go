@@ -15,12 +15,12 @@ var (
 ======================================`
 )
 
-// GET: /
+// GET: /api/
 func Index(w http.ResponseWriter, r *http.Request) {
   fmt.Fprintf(w, version)
 }
 
-// GET: /secured
+// GET: /api/secured
 func SecuredPage(w http.ResponseWriter, r *http.Request) {
   fmt.Fprintf(w, "SECURED PAGE")
 }

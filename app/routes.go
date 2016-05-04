@@ -31,4 +31,18 @@ var routes = Routes{
     true,
     handlers.SecuredPage,
   },
+  Route{
+    "Partners",
+    "GET",
+    "/partners",
+    false,
+    handlers.Partners,
+  },
+  Route{
+    "Partner",
+    "GET",
+    "/partners/{id:[0-9]+}",
+    false,
+    handlers.Partner,
+  },
 }

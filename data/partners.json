@@ -1,0 +1,20 @@
+[
+  {
+    "id" : 0,
+    "name" : "Ericsson",
+    "website" : "http://ericsson.com",
+    "logoUrl" : ""
+  },
+  {
+    "id" : 1,
+    "name" : "Academic Work",
+    "website" : "http://academicwork.se",
+    "logoUrl" : ""
+  },
+  {
+    "id" : 2,
+    "name" : "Cybercom Group",
+    "website" : "http://cybercom.com",
+    "logoUrl" : ""
+  }
+]
