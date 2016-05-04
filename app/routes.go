@@ -2,6 +2,8 @@ package app
 
 import (
   "net/http"
+
+  "github.com/hsson/armit-website/app/handlers"
 )
 
 type Route struct {
@@ -20,13 +22,13 @@ var routes = Routes{
     "GET",
     "/",
     false,
-    Index,
+    handlers.Index,
   },
   Route{
     "Secured",
     "GET",
     "/secured",
     true,
-    SecuredPage,
+    handlers.SecuredPage,
   },
 }
